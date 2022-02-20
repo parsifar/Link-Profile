@@ -61,7 +61,7 @@
 
   <!-- incoming links table -->
   <h2 class="message incoming-message mt-5"></h2>
-  <table class="table incoming-table m-4 mw-100">
+  <table class="table incoming-table">
     <thead>
       <tr>
         <th scope="col">#</th>
