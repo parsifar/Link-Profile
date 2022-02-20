@@ -1,0 +1,35 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.incoming-table,
+.outgoing-table,
+#loader-image {
+  display: none;
+}
+span.post_type.post {
+  background: #7f4f24;
+}
+
+span.post_type.page {
+  background: #023e8a;
+}
+
+span.link_type.internal {
+  background: #47624f;
+}
+
+span.link_type.external {
+  background: #7a404a;
+}
+
+span.badge.anchor {
+  font-size: 1rem;
+}
+img#loader-image {
+  margin: auto;
+}
