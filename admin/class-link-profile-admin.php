@@ -20,7 +20,8 @@
  * @subpackage Link_Profile/admin
  * @author     Ali Parsifar <ali@parsifar.com>
  */
-class Link_Profile_Admin {
+class Link_Profile_Admin
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +48,11 @@ class Link_Profile_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +60,8 @@ class Link_Profile_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,10 +75,13 @@ class Link_Profile_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/link-profile-admin.css', array(), $this->version, 'all' );
-		
-		//enqueue Bootstrap CSS
-		wp_enqueue_style( 'bootstrap-css-link-profile', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
+		if ($_GET["page"] == "link-profile") {
+
+			wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/link-profile-admin.css', array(), $this->version, 'all');
+
+			//enqueue Bootstrap CSS
+			wp_enqueue_style('bootstrap-css-link-profile', plugin_dir_url(__FILE__) . 'css/bootstrap.min.css', array(), $this->version, 'all');
+		}
 	}
 
 	/**
@@ -84,7 +89,8 @@ class Link_Profile_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -98,32 +104,31 @@ class Link_Profile_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/link-profile-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/link-profile-admin.js', array('jquery'), $this->version, false);
 
 		//enqueue Bootstrap JS
-		wp_enqueue_script( 'bootstrap-js-link-profile', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script('bootstrap-js-link-profile', plugin_dir_url(__FILE__) . 'js/bootstrap.min.js', array('jquery'), $this->version, false);
 	}
-	
+
 	/**
 	 * add custom admin menu.
 	 *
 	 * @since    1.0.0
 	 */
-	public function my_admin_menu(){
-		add_menu_page('Link Profile Plugin' , 'Link Profile' , 'manage_options' , 'link-profile' , array($this, 'link_profile_admin_page') , 'dashicons-admin-links' , 250);
+	public function my_admin_menu()
+	{
+		add_menu_page('Link Profile Plugin', 'Link Profile', 'manage_options', 'link-profile', array($this, 'link_profile_admin_page'), 'dashicons-admin-links', 250);
 	}
 
 	//this function renders the HTML of the admin page
-	public function link_profile_admin_page(){
+	public function link_profile_admin_page()
+	{
 		require_once 'partials/link-profile-admin-display.php';
 	}
 
 	//this function handles the AJAX request
-	public function process_link_ajax_requests(){
+	public function process_link_ajax_requests()
+	{
 		require_once 'partials/link-profile-handle-ajax.php';
 	}
-
-	
-
 }
